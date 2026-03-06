@@ -145,13 +145,13 @@ function HeroSection() {
           <div className="order-1 md:order-2 flex justify-center">
             <div className="relative w-full max-w-md">
               <div className="absolute inset-0 bg-sage/10 rounded-3xl transform rotate-3"></div>
-              <div className="relative bg-white rounded-3xl p-8 shadow-lg">
+              <div className="relative bg-white rounded-3xl overflow-hidden shadow-lg">
                 <Image
-                  src={PRODUCT_IMAGE_1}
-                  alt="Kindoora Edge Protector"
-                  width={400}
-                  height={400}
-                  className="w-full h-auto object-contain"
+                  src="/images/hero-baby.jpg"
+                  alt="Happy toddler safely playing in a protected home"
+                  width={500}
+                  height={500}
+                  className="w-full h-auto object-cover"
                   priority
                 />
               </div>
