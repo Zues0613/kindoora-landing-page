@@ -288,25 +288,6 @@ function SolutionSection() {
     </section>
   )
 }
-  ]
-
-  return (
-    <section id="solution" className="py-16 md:py-24 bg-cream">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto">
-          <span className="inline-block px-4 py-1.5 bg-sage/10 text-sage-dark rounded-full text-sm font-medium mb-4">
-            Our Solution
-          </span>
-          <h2 className="text-3xl md:text-4xl font-semibold text-foreground text-balance">
-            Introducing Kindoora Edge Protector
-          </h2>
-          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-            Thoughtfully designed protection that blends seamlessly with your home while keeping your little ones safe.
-          </p>
-        </div>
-
-        <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature, index) => (
             <div
               key={index}
               className="bg-white rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow"
