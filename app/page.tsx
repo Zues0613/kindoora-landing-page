@@ -22,42 +22,42 @@ function Navbar() {
   ]
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur-sm border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-cream/98 backdrop-blur-sm border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <a href="#home" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-sage rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-shadow">
+          {/* Logo and Brand Name - Left */}
+          <a href="#home" className="flex items-center gap-2 hover:opacity-80 transition-opacity flex-shrink-0">
+            <div className="w-9 h-9 md:w-10 md:h-10 bg-sage rounded-full flex items-center justify-center shadow-md">
               <Image 
                 src={LOGO_IMAGE} 
                 alt="Kindoora Logo" 
-                width={24} 
-                height={24}
+                width={20} 
+                height={20}
                 className="object-contain"
               />
             </div>
-            <span className="hidden sm:inline text-lg md:text-xl font-bold text-foreground tracking-tight">Kindoora</span>
+            <span className="text-lg md:text-xl font-bold text-foreground tracking-tight">Kindoora</span>
           </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+          {/* Desktop Navigation - Center */}
+          <div className="hidden md:flex items-center gap-12 flex-1 justify-center">
+            {navLinks.slice(0, 4).map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="relative text-muted-foreground hover:text-foreground transition-colors font-medium group"
+                className="relative text-muted-foreground hover:text-foreground transition-colors font-medium text-sm"
               >
                 {link.label}
-                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-sage transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-sage transition-all duration-300 hover:w-full"></span>
               </a>
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* CTA Button - Right */}
+          <div className="hidden md:block flex-shrink-0">
             <a
               href="#contact"
-              className="inline-flex items-center justify-center px-6 py-2.5 bg-terracotta text-white font-medium rounded-full hover:bg-terracotta-dark transition-colors"
+              className="inline-flex items-center justify-center px-6 py-2.5 bg-terracotta text-white font-medium rounded-full hover:bg-terracotta-dark transition-colors text-sm"
             >
               Contact Us
             </a>
@@ -66,7 +66,7 @@ function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2 text-foreground flex-shrink-0"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -117,10 +117,10 @@ function HeroSection() {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <a
-                href="#shop"
+                href="#contact"
                 className="inline-flex items-center justify-center px-8 py-3.5 bg-terracotta text-white font-medium rounded-full hover:bg-terracotta-dark transition-colors text-lg"
               >
-                Shop Now
+                Contact Us
               </a>
               <a
                 href="#how-it-works"
@@ -349,8 +349,7 @@ function WhyChooseSection() {
     { icon: Award, text: "Premium Quality" },
     { icon: Shield, text: "Child-Safe Materials" },
     { icon: Zap, text: "Easy Installation" },
-    { icon: Check, text: "Warranty Included" },
-    { icon: Package, text: "Premium Packaging" }
+    { icon: Check, text: "Warranty Included" }
   ]
 
   return (
