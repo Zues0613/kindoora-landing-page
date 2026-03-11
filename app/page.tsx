@@ -707,28 +707,19 @@ function ContactSection() {
     e.preventDefault()
     setIsSubmitting(true)
     
-    try {
-      const response = await fetch("/api/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
-
-      if (response.ok) {
-        setSubmitMessage("Thank you! We've received your message and will get back to you shortly.")
-        setFormData({ fullName: "", email: "", phone: "", message: "" })
-        setTimeout(() => setSubmitMessage(""), 5000)
-      } else {
-        setSubmitMessage("Something went wrong. Please try again.")
-      }
-    } catch (error) {
-      console.error("Error:", error)
-      setSubmitMessage("Something went wrong. Please try again.")
-    } finally {
-      setIsSubmitting(false)
-    }
+    // Simulate submission delay
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    
+    // Log the form data (in production, this would be sent to a server)
+    console.log("[v0] Contact form submitted:", formData)
+    
+    // Show success message
+    setSubmitMessage("Thank you! We've received your message. We'll get back to you within 24 hours.")
+    setFormData({ fullName: "", email: "", phone: "", message: "" })
+    
+    // Clear message after 5 seconds
+    setTimeout(() => setSubmitMessage(""), 5000)
+    setIsSubmitting(false)
   }
 
   return (
