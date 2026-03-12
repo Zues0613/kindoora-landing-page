@@ -1,13 +1,16 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import { ChevronDown, Menu, X, Shield, Leaf, Zap, Package, Heart, Home, Award, Clock, Check, Star, Droplets, Scissors, Calendar } from "lucide-react"
+
+import logoBlack from "./logo-black.png"
+import logoWhite from "./logo-white.png"
+import newImage from "./iml.jpeg"
 
 // Product Images
 const PRODUCT_IMAGE_1 = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/imageArtboard%201-tlw7NYIBzYK9B6AjnS7NnBv6GuCHML.jpg"
 const PRODUCT_IMAGE_2 = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/imageArtboard%202-ut8Gs1QcH0E3pp6WWbnDiagFkmw5mw.jpg"
-const LOGO_IMAGE = "/images/kindoora-logo.png"
 
 // Navbar Component
 function Navbar() {
@@ -24,19 +27,16 @@ function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-cream/98 backdrop-blur-sm border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo and Brand Name - Left */}
-          <a href="#home" className="flex items-center gap-2 hover:opacity-80 transition-opacity flex-shrink-0">
-            <div className="w-9 h-9 md:w-10 md:h-10 bg-sage rounded-full flex items-center justify-center shadow-md">
-              <Image 
-                src={LOGO_IMAGE} 
-                alt="Kindoora Logo" 
-                width={20} 
-                height={20}
-                className="object-contain"
-              />
-            </div>
-            <span className="text-lg md:text-xl font-bold text-foreground tracking-tight">Kindoora</span>
+        <div className="flex items-center justify-between h-20 md:h-28">
+          {/* Logo - Left */}
+          <a href="#home" className="flex items-center hover:opacity-80 transition-opacity flex-shrink-0">
+            <Image
+              src={logoBlack}
+              alt="Kindoora Logo"
+              width={400}
+              height={100}
+              className="object-contain h-20 md:h-28 w-auto"
+            />
           </a>
 
           {/* Desktop Navigation - Center */}
@@ -246,7 +246,7 @@ function SolutionSection() {
         <p className="text-center text-muted-foreground text-lg mb-12 max-w-2xl mx-auto">
           Premium corner protection designed with your family&apos;s safety in mind
         </p>
-        
+
         {/* Product Image */}
         <div className="flex justify-center mb-16">
           <div className="relative w-full max-w-md">
@@ -366,7 +366,7 @@ function WhyChooseSection() {
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
               We believe every child deserves to explore safely, and every parent deserves peace of mind. That&apos;s why we&apos;ve crafted our products with the utmost care and attention to detail.
             </p>
-            
+
             <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-4">
               {reasons.map((reason, index) => (
                 <div
@@ -379,7 +379,7 @@ function WhyChooseSection() {
               ))}
             </div>
           </div>
-          
+
           <div className="relative">
             <div className="rounded-3xl overflow-hidden shadow-lg">
               <Image
@@ -403,7 +403,7 @@ function SocialProofSection() {
 
   const testimonials = [
     {
-      name: "Priya Sharma",
+      name: "Meenakshi Arunachalam",
       role: "Mother of 2",
       content: "As a first-time mom, I was constantly worried about my toddler bumping into furniture. Kindoora gave me the peace of mind I needed. The quality is exceptional and it blends perfectly with our furniture.",
       rating: 5
@@ -425,7 +425,7 @@ function SocialProofSection() {
   // Auto-advance carousel
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+      setCurrentIndex((prev: number) => (prev + 1) % testimonials.length)
     }, 5000)
     return () => clearInterval(interval)
   }, [testimonials.length])
@@ -484,9 +484,8 @@ function SocialProofSection() {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  index === currentIndex ? 'bg-sage w-8' : 'bg-sage/30 hover:bg-sage/50'
-                }`}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${index === currentIndex ? 'bg-sage w-8' : 'bg-sage/30 hover:bg-sage/50'
+                  }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}
@@ -538,13 +537,13 @@ function HowItWorksSection() {
         </div>
 
         <div className="mt-16 grid lg:grid-cols-2 gap-12 items-center">
-          <div className="rounded-3xl overflow-hidden shadow-lg">
+          <div className="rounded-3xl overflow-hidden shadow-lg border border-border/50 bg-white">
             <Image
-              src="/images/solution-installation.jpg"
+              src={newImage}
               alt="Installation process demonstration"
-              width={500}
-              height={500}
-              className="w-full h-auto object-cover"
+              width={600}
+              height={600}
+              className="w-full h-auto object-contain"
             />
           </div>
 
@@ -629,9 +628,8 @@ function FAQSection() {
               >
                 <span className="font-medium text-foreground">{faq.question}</span>
                 <ChevronDown
-                  className={`w-5 h-5 text-muted-foreground flex-shrink-0 transition-transform ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
+                  className={`w-5 h-5 text-muted-foreground flex-shrink-0 transition-transform ${openIndex === index ? "rotate-180" : ""
+                    }`}
                 />
               </button>
               {openIndex === index && (
@@ -659,28 +657,28 @@ function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitMessage, setSubmitMessage] = useState("")
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-    setFormData((prev) => ({
+    setFormData((prev: typeof formData) => ({
       ...prev,
       [name]: value,
     }))
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
+
     // Simulate submission delay
     await new Promise(resolve => setTimeout(resolve, 1000))
-    
+
     // Log the form data (in production, this would be sent to a server)
     console.log("[v0] Contact form submitted:", formData)
-    
+
     // Show success message
     setSubmitMessage("Thank you! We've received your message. We'll get back to you within 24 hours.")
     setFormData({ fullName: "", email: "", phone: "", message: "" })
-    
+
     // Clear message after 5 seconds
     setTimeout(() => setSubmitMessage(""), 5000)
     setIsSubmitting(false)
@@ -791,24 +789,23 @@ function ContactSection() {
 // Footer
 function Footer() {
   return (
-    <footer className="py-8 bg-foreground">
+    <footer className="py-12 bg-[#3D3D3D] text-white border-t border-border/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-sage rounded-full flex items-center justify-center">
-              <Image 
-                src={LOGO_IMAGE} 
-                alt="Kindoora Logo" 
-                width={16} 
-                height={16}
-                className="object-contain"
-              />
-            </div>
-            <span className="text-white font-medium">Kindoora</span>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+          <a href="#home" className="flex items-center hover:opacity-80 transition-opacity flex-shrink-0">
+            <Image
+              src={logoWhite}
+              alt="Kindoora Logo"
+              width={400}
+              height={100}
+              className="object-contain h-20 md:h-28 w-auto"
+            />
+          </a>
+          <div className="flex flex-col items-center md:items-end gap-2">
+            <p className="text-white/60 text-sm text-center">
+              © 2026 Kindoora — Gentle Safety for Growing Homes.
+            </p>
           </div>
-          <p className="text-white/60 text-sm text-center">
-            © 2026 Kindoora — Gentle Safety for Growing Homes.
-          </p>
         </div>
       </div>
     </footer>
@@ -826,10 +823,10 @@ export default function KindooraLandingPage() {
       <BenefitsSection />
       <WhyChooseSection />
       <SocialProofSection />
-        <HowItWorksSection />
-        <FAQSection />
-        <ContactSection />
-        <Footer />
+      <HowItWorksSection />
+      <FAQSection />
+      <ContactSection />
+      <Footer />
     </main>
   )
 }
