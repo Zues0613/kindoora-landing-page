@@ -27,15 +27,15 @@ function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-cream/98 backdrop-blur-sm border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 md:h-28">
+        <div className="flex items-center justify-between h-28 md:h-40">
           {/* Logo - Left */}
           <a href="#home" className="flex items-center hover:opacity-80 transition-opacity flex-shrink-0">
             <Image
               src={logoBlack}
               alt="Kindoora Logo"
-              width={400}
-              height={100}
-              className="object-contain h-20 md:h-28 w-auto"
+              width={600}
+              height={180}
+              className="object-contain h-32 md:h-48 lg:h-64 w-auto"
             />
           </a>
 
@@ -105,7 +105,7 @@ function Navbar() {
 // Hero Section
 function HeroSection() {
   return (
-    <section id="home" className="pt-24 md:pt-32 pb-16 md:pb-24 bg-cream">
+    <section id="home" className="pt-32 md:pt-48 pb-16 md:pb-24 bg-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
@@ -115,7 +115,7 @@ function HeroSection() {
             <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg">
               Protect your little explorers from sharp furniture edges while keeping your home warm, comfortable, and beautifully designed.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <div className="mt-8 flex flex-col sm:flex-row items-center md:items-start justify-center md:justify-start gap-4">
               <a
                 href="#contact"
                 className="inline-flex items-center justify-center px-8 py-3.5 bg-terracotta text-white font-medium rounded-full hover:bg-terracotta-dark transition-colors text-lg"
@@ -129,18 +129,22 @@ function HeroSection() {
                 Learn More
               </a>
             </div>
-            <div className="mt-10 flex flex-wrap items-center gap-3">
-              <div className="flex items-center gap-2 bg-sage/10 px-4 py-2.5 rounded-full border border-sage/20 hover:bg-sage/15 transition-colors">
-                <Shield className="w-4 h-4 text-sage" />
-                <span className="text-sm font-medium text-sage-dark">Kid Safe</span>
+            <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-3xl mx-auto md:mx-0">
+              <div className="flex items-center justify-center gap-2 bg-sage/10 px-3 py-3 rounded-2xl border border-sage/20 hover:bg-sage/15 transition-colors w-full h-full min-h-[64px] sm:min-h-0">
+                <Shield className="w-4 h-4 text-sage flex-shrink-0" />
+                <span className="text-sm font-medium text-sage-dark text-center leading-tight">Kid Safe</span>
               </div>
-              <div className="flex items-center gap-2 bg-sage/10 px-4 py-2.5 rounded-full border border-sage/20 hover:bg-sage/15 transition-colors">
-                <Leaf className="w-4 h-4 text-sage" />
-                <span className="text-sm font-medium text-sage-dark">Non-Toxic</span>
+              <div className="flex items-center justify-center gap-2 bg-sage/10 px-3 py-3 rounded-2xl border border-sage/20 hover:bg-sage/15 transition-colors w-full h-full min-h-[64px] sm:min-h-0">
+                <Leaf className="w-4 h-4 text-sage flex-shrink-0" />
+                <span className="text-sm font-medium text-sage-dark text-center leading-tight">Non-Toxic</span>
               </div>
-              <div className="flex items-center gap-2 bg-sage/10 px-4 py-2.5 rounded-full border border-sage/20 hover:bg-sage/15 transition-colors">
-                <Zap className="w-4 h-4 text-sage" />
-                <span className="text-sm font-medium text-sage-dark">Soft Protection</span>
+              <div className="flex items-center justify-center gap-2 bg-sage/10 px-3 py-3 rounded-2xl border border-sage/20 hover:bg-sage/15 transition-colors w-full h-full min-h-[64px] sm:min-h-0">
+                <Zap className="w-4 h-4 text-sage flex-shrink-0" />
+                <span className="text-sm font-medium text-sage-dark text-center leading-tight">Soft Protection</span>
+              </div>
+              <div className="flex items-center justify-center gap-2 bg-sage/10 px-3 py-3 rounded-2xl border border-sage/20 hover:bg-sage/15 transition-colors w-full h-full min-h-[64px] sm:min-h-0">
+                <Award className="w-4 h-4 text-sage flex-shrink-0" />
+                <span className="text-sm font-medium text-sage-dark text-center leading-tight">Rounded Edge Safety</span>
               </div>
             </div>
           </div>
@@ -349,46 +353,45 @@ function WhyChooseSection() {
     { icon: Award, text: "Premium Quality" },
     { icon: Shield, text: "Child-Safe Materials" },
     { icon: Zap, text: "Easy Installation" },
-    { icon: Check, text: "Warranty Included" }
+    { icon: Package, text: "Premium Packaging" }
   ]
 
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
+        <div className="flex flex-col items-center gap-12">
+          {/* Image - Now at the top for all screen sizes */}
+          <div className="relative w-full max-w-4xl mx-auto shadow-2xl rounded-3xl overflow-hidden ring-1 ring-black/5">
+            <Image
+              src="/images/trusted-parents.jpg"
+              alt="Caring parents with their baby in a safe home"
+              width={1200}
+              height={600}
+              className="w-full h-auto object-cover max-h-[500px]"
+            />
+          </div>
+
+          <div className="max-w-3xl text-center">
             <span className="inline-block px-4 py-1.5 bg-sage/10 text-sage-dark rounded-full text-sm font-medium mb-4">
               Why Kindoora
             </span>
-            <h2 className="text-3xl md:text-4xl font-semibold text-foreground leading-tight text-balance">
+            <h2 className="text-3xl md:text-5xl font-semibold text-foreground leading-tight text-balance">
               Trusted by Thousands of Caring Parents
             </h2>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed">
               We believe every child deserves to explore safely, and every parent deserves peace of mind. That&apos;s why we&apos;ve crafted our products with the utmost care and attention to detail.
             </p>
 
-            <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-4">
+            <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4 w-full">
               {reasons.map((reason, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-3 bg-cream rounded-xl px-4 py-3"
+                  className="flex items-center justify-center gap-3 bg-cream rounded-xl px-4 py-4 border border-sage/10 hover:border-sage/30 transition-colors"
                 >
                   <reason.icon className="w-5 h-5 text-sage flex-shrink-0" />
-                  <span className="text-sm font-medium text-foreground">{reason.text}</span>
+                  <span className="text-sm font-medium text-foreground whitespace-nowrap">{reason.text}</span>
                 </div>
               ))}
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="rounded-3xl overflow-hidden shadow-lg">
-              <Image
-                src="/images/trusted-parents.jpg"
-                alt="Caring parents with their baby in a safe home"
-                width={500}
-                height={500}
-                className="w-full h-auto object-cover"
-              />
             </div>
           </div>
         </div>
@@ -403,19 +406,19 @@ function SocialProofSection() {
 
   const testimonials = [
     {
-      name: "Meenakshi Arunachalam",
+      name: "Nivi Vishwa",
       role: "Mother of 2",
       content: "As a first-time mom, I was constantly worried about my toddler bumping into furniture. Kindoora gave me the peace of mind I needed. The quality is exceptional and it blends perfectly with our furniture.",
       rating: 5
     },
     {
-      name: "Anita Reddy",
+      name: "Ammu Sivakumar",
       role: "Mother of 1",
       content: "I love how easy it was to install. Within 10 minutes, our entire living room was baby-proofed. My husband was impressed with how secure the adhesive is. Highly recommend!",
       rating: 5
     },
     {
-      name: "Meera Patel",
+      name: "Meenakshi Arunachalam",
       role: "Mother of 3",
       content: "After trying several brands, Kindoora stands out for its premium quality. The soft cushioning has already saved us from numerous potential bumps. Worth every penny!",
       rating: 5
@@ -788,24 +791,182 @@ function ContactSection() {
 
 // Footer
 function Footer() {
+  const productLinks = [
+    { label: "Explore", href: "#home" },
+    { label: "Features", href: "#solution" },
+    { label: "Pricing", href: "#contact" },
+    { label: "Integrations", href: "#how-it-works" },
+    { label: "Updates", href: "#" },
+  ]
+
+  const companyLinks = [
+    { label: "About Us", href: "#" },
+    { label: "Careers", href: "#" },
+    { label: "Blog", href: "#" },
+    { label: "Partners", href: "#" },
+    { label: "Testimonials", href: "#faq" },
+  ]
+
+  const legalLinks = [
+    { label: "Terms & Conditions", href: "#" },
+    { label: "Privacy Policy", href: "#" },
+    { label: "Refund Policy", href: "#" },
+    { label: "Cookie Policy", href: "#" },
+  ]
+
+  const socialLinks = [
+    {
+      label: "Instagram",
+      href: "https://instagram.com",
+      icon: (
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" />
+        </svg>
+      ),
+    },
+    {
+      label: "LinkedIn",
+      href: "https://linkedin.com",
+      icon: (
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+        </svg>
+      ),
+    },
+    {
+      label: "Twitter / X",
+      href: "https://x.com",
+      icon: (
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+        </svg>
+      ),
+    },
+    {
+      label: "Email",
+      href: "mailto:support@kindoora.com",
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+        </svg>
+      ),
+    },
+  ]
+
   return (
-    <footer className="py-12 bg-[#3D3D3D] text-white border-t border-border/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <a href="#home" className="flex items-center hover:opacity-80 transition-opacity flex-shrink-0">
-            <Image
-              src={logoWhite}
-              alt="Kindoora Logo"
-              width={400}
-              height={100}
-              className="object-contain h-20 md:h-28 w-auto"
-            />
-          </a>
-          <div className="flex flex-col items-center md:items-end gap-2">
-            <p className="text-white/60 text-sm text-center">
-              © 2026 Kindoora — Gentle Safety for Growing Homes.
+    <footer className="relative bg-[#3D3D3D] text-white overflow-hidden">
+      {/* Subtle gradient overlay to match landing page feel */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#3D3D3D] via-[#2F2F2F] to-[#3D3D3D] pointer-events-none" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8 md:pt-20 md:pb-10">
+        {/* 4-Column Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+
+          {/* Column 1 – Brand Section */}
+          <div className="sm:col-span-2 lg:col-span-1 flex flex-col items-center lg:items-start">
+            <a href="#home" className="flex items-center hover:opacity-80 transition-opacity flex-shrink-0 mb-5">
+              <Image
+                src={logoWhite}
+                alt="Kindoora Logo"
+                width={600}
+                height={180}
+                className="object-contain h-32 md:h-48 lg:h-64 w-auto"
+              />
+            </a>
+            <p className="text-white/60 text-sm leading-relaxed text-center lg:text-left max-w-xs">
+              Kindoora helps creators, entrepreneurs, and communities build, launch, and scale digital experiences with powerful tools and simple workflows.
             </p>
+
+            {/* Social Icons */}
+            <div className="flex items-center gap-3 mt-6">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="group flex items-center justify-center w-10 h-10 rounded-xl bg-white/8 border border-white/10 text-white/70 hover:bg-white/15 hover:text-white hover:border-white/25 transition-all duration-300"
+                >
+                  <span className="transform group-hover:scale-110 transition-transform duration-300">
+                    {social.icon}
+                  </span>
+                </a>
+              ))}
+            </div>
           </div>
+
+          {/* Column 2 – Product */}
+          <div className="flex flex-col items-center lg:items-start">
+            <h4 className="text-white font-semibold text-base mb-5 tracking-wide">Product</h4>
+            <ul className="space-y-3 text-center lg:text-left">
+              {productLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-white/60 hover:text-white text-sm transition-colors duration-300 hover:translate-x-1 inline-block"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3 – Company */}
+          <div className="flex flex-col items-center lg:items-start">
+            <h4 className="text-white font-semibold text-base mb-5 tracking-wide">Company</h4>
+            <ul className="space-y-3 text-center lg:text-left">
+              {companyLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-white/60 hover:text-white text-sm transition-colors duration-300 hover:translate-x-1 inline-block"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4 – Legal */}
+          <div className="flex flex-col items-center lg:items-start">
+            <h4 className="text-white font-semibold text-base mb-5 tracking-wide">Legal</h4>
+            <ul className="space-y-3 text-center lg:text-left">
+              {legalLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-white/60 hover:text-white text-sm transition-colors duration-300 hover:translate-x-1 inline-block"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            {/* Support Email */}
+            <div className="mt-6 flex items-center gap-2 text-white/60 text-sm">
+              <span>📧</span>
+              <a
+                href="mailto:support@kindoora.com"
+                className="hover:text-white transition-colors duration-300"
+              >
+                support@kindoora.com
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="mt-14 border-t border-white/10" />
+
+        {/* Bottom Footer Bar */}
+        <div className="mt-6 flex items-center justify-center">
+          <p className="text-white/50 text-sm text-center">
+            © 2026 Kindoora. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
