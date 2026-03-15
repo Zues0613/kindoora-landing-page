@@ -27,7 +27,7 @@ function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-cream/98 backdrop-blur-sm border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-28 md:h-40">
+        <div className="flex items-center justify-between h-20 md:h-28">
           {/* Logo - Left */}
           <a href="#home" className="flex items-center hover:opacity-80 transition-opacity flex-shrink-0">
             <Image
@@ -35,7 +35,8 @@ function Navbar() {
               alt="Kindoora Logo"
               width={600}
               height={180}
-              className="object-contain h-32 md:h-48 lg:h-64 w-auto"
+              className="object-contain w-[140px] md:w-[180px] lg:w-[200px] h-auto"
+              priority
             />
           </a>
 
@@ -106,25 +107,24 @@ function Navbar() {
 function HeroSection() {
   const heroSlides = [
     {
-      tone: "Professional",
-      headline: "Transform Dangerous Corners into Safe Edges in Seconds",
+      tone: "Trust1",
+      headline: "A Safer Home Starts with Protecting Every Corner",
+      subheadline: "Edge Protector uses durable, child-safe materials to cushion sharp furniture edges and help prevent accidental injuries at home.",
+      cta: "Start Protecting Your Home",
+    },
+    {
+      tone: "Trust2",
+      headline: "Reliable Protection for the Corners That Matter Most",
       subheadline:
-        "Edge Protector is designed to cushion sharp furniture edges and help prevent accidental injuries, creating a safer home environment for children and families.",
+        "Designed with strong adhesive and soft cushioning, Edge Protector helps families reduce the risk of painful bumps from sharp furniture edges.",
       cta: "Make Your Home Safer Today",
     },
     {
-      tone: "Emotional",
-      headline: "Because One Sharp Corner Shouldn’t Hurt the People You Love",
+      tone: "Trust3",
+      headline: "Trusted Protection for Your Family’s Safety",
       subheadline:
-        "Edge Protector gently cushions dangerous furniture corners, helping protect your children from painful bumps while they explore and play.",
+        "Edge Protector provides a simple and dependable way to cover dangerous furniture corners and create a safer living space for children and families.",
       cta: "Protect Your Family Today",
-    },
-    {
-      tone: "Trust",
-      headline: "A Simple Safety Solution for Every Home",
-      subheadline:
-        "Edge Protector uses soft, durable materials to cover sharp furniture edges and help reduce the risk of injuries at home.",
-      cta: "Start Protecting Your Home",
     },
   ]
 
@@ -151,10 +151,11 @@ function HeroSection() {
   }
 
   return (
-    <section id="home" className="pt-32 md:pt-48 pb-16 md:pb-24 bg-cream">
+    <section id="home" className="pt-28 sm:pt-32 md:pt-40 pb-12 md:pb-24 bg-cream overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="order-2 md:order-1">
+        <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          {/* Text Content */}
+          <div className="order-2 md:order-1 text-center md:text-left pt-4 md:pt-0">
             <div
               className="overflow-hidden"
               onTouchStart={handleHeroTouchStart}
@@ -166,22 +167,22 @@ function HeroSection() {
               >
                 {heroSlides.map((slide, index) => (
                   <div key={slide.tone} className="w-full flex-shrink-0">
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight text-balance">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight px-1 sm:px-0">
                       {slide.headline}
                     </h1>
-                    <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg">
+                    <p className="mt-4 md:mt-6 text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg mx-auto md:mx-0 px-2 sm:px-0">
                       {slide.subheadline}
                     </p>
-                    <div className="mt-8 flex flex-col sm:flex-row items-center md:items-start justify-center md:justify-start gap-4">
+                    <div className="mt-8 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 w-full">
                       <a
                         href="#contact"
-                        className="inline-flex items-center justify-center px-8 py-3.5 bg-terracotta text-white font-medium rounded-full hover:bg-terracotta-dark transition-colors text-lg"
+                        className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-10 py-3.5 sm:py-3.5 bg-terracotta text-white font-semibold rounded-full hover:bg-terracotta-dark transition-colors text-base sm:text-lg"
                       >
-                        {slide.cta}
+                        Shop Now
                       </a>
                       <a
                         href="#how-it-works"
-                        className="inline-flex items-center justify-center px-8 py-3.5 bg-white text-foreground font-medium rounded-full border border-border hover:bg-cream-dark transition-colors text-lg"
+                        className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-10 py-3.5 sm:py-3.5 bg-white text-foreground font-semibold rounded-full border border-border hover:bg-cream-dark transition-colors text-base sm:text-lg"
                       >
                         Learn More
                       </a>
@@ -191,26 +192,25 @@ function HeroSection() {
               </div>
             </div>
 
-            <div className="mt-6 flex items-center gap-4">
+            <div className="mt-6 flex items-center justify-center md:justify-start gap-1.5 sm:gap-3 w-full overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
               <button
                 type="button"
                 onClick={heroPrev}
-                className="px-3 py-1 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors"
+                className="px-3 py-1.5 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors flex-shrink-0"
                 aria-label="Previous hero slide"
               >
                 ←
               </button>
-              <div className="flex gap-2">
-                {["Professional", "Emotional", "Trust"].map((label, index) => (
+              <div className="flex flex-nowrap justify-center gap-1.5 sm:gap-2">
+                {["Trust1", "Trust2", "Trust3"].map((label, index) => (
                   <button
                     key={label}
                     type="button"
                     onClick={() => setHeroSlide(index)}
-                    className={`px-3 py-1 text-xs rounded-full border transition-colors ${
-                      heroSlide === index
-                        ? "bg-sage text-sage-dark border-sage"
-                        : "bg-white text-muted-foreground border-border hover:bg-cream-dark"
-                    }`}
+                    className={`px-3 py-1.5 text-xs sm:text-sm rounded-full border transition-colors whitespace-nowrap flex-shrink-0 ${heroSlide === index
+                      ? "bg-sage text-sage-dark border-sage"
+                      : "bg-white text-muted-foreground border-border hover:bg-cream-dark"
+                      }`}
                     aria-label={`${label} hero slide`}
                   >
                     {label}
@@ -220,42 +220,40 @@ function HeroSection() {
               <button
                 type="button"
                 onClick={heroNext}
-                className="px-3 py-1 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors"
+                className="px-3 py-1.5 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors flex-shrink-0"
                 aria-label="Next hero slide"
               >
                 →
               </button>
             </div>
 
-            <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-3xl mx-auto md:mx-0">
-              <div className="flex items-center justify-center gap-2 bg-sage/10 px-3 py-3 rounded-2xl border border-sage/20 hover:bg-sage/15 transition-colors w-full h-full min-h-[64px] sm:min-h-0">
-                <Shield className="w-4 h-4 text-sage flex-shrink-0" />
-                <span className="text-sm font-medium text-sage-dark text-center leading-tight">Kid Safe</span>
+            <div className="mt-10 md:mt-12 flex flex-row items-center justify-center md:justify-start gap-6 sm:gap-10 max-w-3xl mx-auto md:mx-0">
+              <div className="flex items-center gap-2">
+                <Shield className="w-5 h-5 text-sage flex-shrink-0" strokeWidth={1.5} />
+                <span className="text-[13px] sm:text-sm font-medium text-muted-foreground leading-tight text-left">Child-<br/>Safe</span>
               </div>
-              <div className="flex items-center justify-center gap-2 bg-sage/10 px-3 py-3 rounded-2xl border border-sage/20 hover:bg-sage/15 transition-colors w-full h-full min-h-[64px] sm:min-h-0">
-                <Leaf className="w-4 h-4 text-sage flex-shrink-0" />
-                <span className="text-sm font-medium text-sage-dark text-center leading-tight">Non-Toxic</span>
+              <div className="flex items-center gap-2">
+                <Leaf className="w-5 h-5 text-sage flex-shrink-0" strokeWidth={1.5} />
+                <span className="text-[13px] sm:text-sm font-medium text-muted-foreground leading-tight text-left">Non-<br/>Toxic</span>
               </div>
-              <div className="flex items-center justify-center gap-2 bg-sage/10 px-3 py-3 rounded-2xl border border-sage/20 hover:bg-sage/15 transition-colors w-full h-full min-h-[64px] sm:min-h-0">
-                <Zap className="w-4 h-4 text-sage flex-shrink-0" />
-                <span className="text-sm font-medium text-sage-dark text-center leading-tight">Soft Protection</span>
-              </div>
-              <div className="flex items-center justify-center gap-2 bg-sage/10 px-3 py-3 rounded-2xl border border-sage/20 hover:bg-sage/15 transition-colors w-full h-full min-h-[64px] sm:min-h-0">
-                <Award className="w-4 h-4 text-sage flex-shrink-0" />
-                <span className="text-sm font-medium text-sage-dark text-center leading-tight">Rounded Edge Safety</span>
+              <div className="flex items-center gap-2">
+                <Award className="w-5 h-5 text-sage flex-shrink-0" strokeWidth={1.5} />
+                <span className="text-[13px] sm:text-sm font-medium text-muted-foreground leading-tight text-left">Premium<br/>Quality</span>
               </div>
             </div>
           </div>
-          <div className="order-1 md:order-2 flex justify-center">
-            <div className="relative w-full max-w-md">
+
+          {/* Image Content */}
+          <div className="order-1 md:order-2 flex justify-center w-full px-2 sm:px-0 mt-8 md:mt-0 pb-4 md:pb-0">
+            <div className="relative w-full max-w-[280px] sm:max-w-sm md:max-w-md">
               <div className="absolute inset-0 bg-sage/10 rounded-3xl transform rotate-3"></div>
-              <div className="relative bg-white rounded-3xl overflow-hidden shadow-lg">
+              <div className="relative bg-white rounded-3xl overflow-hidden shadow-lg w-full aspect-square">
                 <Image
                   src="/images/hero-baby.jpg"
                   alt="Happy toddler safely playing in a protected home"
-                  width={500}
-                  height={500}
-                  className="w-full h-auto object-cover"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
                   priority
                 />
               </div>
@@ -271,24 +269,21 @@ function HeroSection() {
 function ProblemSection() {
   const problemSlides = [
     {
-      tone: "Professional",
+      tone: "Trust1",
       body: [
-        "Many homes contain furniture with sharp corners such as tables, cabinets, and countertops. These edges can pose a safety risk, especially for toddlers who are learning to walk or play around the house.",
-        "Without proper protection, even a small accident can result in painful injuries.",
+        "Sharp furniture corners are one of the most common causes of minor home injuries. Tables, cabinets, and countertops often have hard edges that can lead to painful bumps, especially for toddlers learning to walk",
       ],
     },
     {
-      tone: "Emotional",
+      tone: "Trust2",
       body: [
-        "Children love to explore every part of the home. But while they run, play, and learn to walk, a simple table corner can suddenly turn a happy moment into a painful one.",
-        "For parents, even a small bump can bring worry and stress.",
+        "Even in well-organized homes, furniture edges can pose hidden safety risks. Without proper protection, accidental contact with sharp corners can result in unnecessary injuries for children and family members.",
       ],
     },
     {
-      tone: "Trust",
+      tone: "Trust3",
       body: [
-        "Sharp furniture edges are one of the most common causes of minor home injuries. Parents often rely on constant supervision, but accidents can still happen.",
-        "Without proper protection, these everyday corners can become unexpected hazards.",
+        "Many parents rely on supervision to keep their children safe, but accidents can still happen. Sharp furniture edges remain an everyday hazard that can easily be overlooked.",
       ],
     },
   ]
@@ -316,25 +311,25 @@ function ProblemSection() {
   }
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-12 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative">
-            <div className="rounded-3xl overflow-hidden shadow-lg">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div className="relative order-1 px-4 sm:px-0">
+            <div className="rounded-3xl overflow-hidden shadow-lg w-full aspect-square relative">
               <Image
                 src="/images/problem-sharp-edges.jpg"
                 alt="Toddler exploring near sharp furniture edges"
-                width={500}
-                height={500}
-                className="w-full h-auto object-cover"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
               />
             </div>
           </div>
-          <div>
+          <div className="order-2 text-center md:text-left">
             <span className="inline-block px-4 py-1.5 bg-sage/10 text-sage-dark rounded-full text-sm font-medium mb-4">
               Understanding the Need
             </span>
-            <h2 className="text-3xl md:text-4xl font-semibold text-foreground leading-tight text-balance">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground leading-tight text-balance">
               Your Little One&apos;s World of Discovery
             </h2>
 
@@ -352,7 +347,7 @@ function ProblemSection() {
                     {slide.body.map((paragraph, idx) => (
                       <p
                         key={idx}
-                        className={`text-lg text-muted-foreground leading-relaxed ${idx === 0 ? "mb-4" : ""}`}
+                        className={`text-base sm:text-lg text-muted-foreground leading-relaxed ${idx === 0 ? "mb-4" : ""}`}
                       >
                         {paragraph}
                       </p>
@@ -362,26 +357,25 @@ function ProblemSection() {
               </div>
             </div>
 
-            <div className="mt-6 flex items-center gap-4">
+            <div className="mt-6 flex items-center justify-center md:justify-start gap-1.5 sm:gap-3 w-full overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
               <button
                 type="button"
                 onClick={problemPrev}
-                className="px-3 py-1 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors"
+                className="px-3 py-1.5 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors flex-shrink-0"
                 aria-label="Previous problem slide"
               >
                 ←
               </button>
-              <div className="flex flex-wrap gap-2">
-                {["Professional", "Emotional", "Trust"].map((label, index) => (
+              <div className="flex flex-nowrap justify-center gap-1.5 sm:gap-2">
+                {["Trust1", "Trust2", "Trust3"].map((label, index) => (
                   <button
                     key={label}
                     type="button"
                     onClick={() => setProblemSlide(index)}
-                    className={`px-3 py-1 text-xs rounded-full border transition-colors ${
-                      problemSlide === index
-                        ? "bg-sage text-sage-dark border-sage"
-                        : "bg-white text-muted-foreground border-border hover:bg-cream-dark"
-                    }`}
+                    className={`px-3 py-1.5 text-xs sm:text-sm rounded-full border transition-colors whitespace-nowrap flex-shrink-0 ${problemSlide === index
+                      ? "bg-sage text-sage-dark border-sage"
+                      : "bg-white text-muted-foreground border-border hover:bg-cream-dark"
+                      }`}
                     aria-label={`${label} problem slide`}
                   >
                     {label}
@@ -391,19 +385,19 @@ function ProblemSection() {
               <button
                 type="button"
                 onClick={problemNext}
-                className="px-3 py-1 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors"
+                className="px-3 py-1.5 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors flex-shrink-0"
                 aria-label="Next problem slide"
               >
                 →
               </button>
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-4">
-              <div className="flex items-center gap-2 bg-cream px-4 py-2 rounded-full">
+            <div className="mt-8 flex flex-col sm:flex-row flex-wrap justify-center md:justify-start gap-3 w-full">
+              <div className="flex items-center justify-center gap-2 bg-cream px-4 py-2.5 rounded-full w-full sm:w-auto">
                 <Heart className="w-4 h-4 text-terracotta" />
                 <span className="text-sm text-foreground">Parent Approved</span>
               </div>
-              <div className="flex items-center gap-2 bg-cream px-4 py-2 rounded-full">
+              <div className="flex items-center justify-center gap-2 bg-cream px-4 py-2.5 rounded-full w-full sm:w-auto">
                 <Home className="w-4 h-4 text-terracotta" />
                 <span className="text-sm text-foreground">Home Friendly</span>
               </div>
@@ -445,19 +439,19 @@ function SolutionSection() {
       tone: "Professional",
       title: "The Kindoora Edge Protector",
       description:
-        "Edge Protector offers a simple and effective way to reduce the risk of furniture-related injuries. By covering sharp corners with soft cushioning material, it helps create a safer environment for children and families.",
+        "Edge Protector offers a reliable safety solution by covering sharp furniture corners with soft, shock-absorbing material. It helps reduce the risk of injuries and creates a safer home environment for families.",
     },
     {
       tone: "Emotional",
       title: "The Kindoora Edge Protector",
       description:
-        "Edge Protector adds a gentle layer of protection to the corners that matter most. It helps prevent painful bumps and allows children to play and explore freely while parents enjoy peace of mind.",
+        "Designed with durable materials and strong adhesive, Edge Protector securely cushions dangerous edges and provides dependable protection for everyday household furniture.",
     },
     {
       tone: "Trust",
       title: "The Kindoora Edge Protector",
       description:
-        "Edge Protector is designed with durable, shock-absorbing materials that safely cushion sharp furniture edges. With easy installation and reliable protection, it helps families reduce the risk of accidents at home.",
+        "Edge Protector helps families create a safer living space by transforming sharp corners into soft, protected edges. With easy installation and long-lasting performance, it provides trusted protection for your home.",
     },
   ]
 
@@ -484,8 +478,24 @@ function SolutionSection() {
   }
 
   return (
-    <section id="solution" className="py-16 md:py-24 bg-cream">
+    <section id="solution" className="py-12 md:py-24 bg-cream overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div className="flex justify-center mb-8 sm:mb-12 px-2 sm:px-0">
+          <div className="relative w-full max-w-xs sm:max-w-md">
+            <div className="absolute inset-0 bg-sage/10 rounded-3xl transform -rotate-2"></div>
+            <div className="relative bg-white rounded-3xl p-6 sm:p-8 shadow-lg aspect-square flex items-center justify-center">
+              <Image
+                src={PRODUCT_IMAGE_1}
+                alt="Kindoora Edge Protector"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-contain p-4"
+              />
+            </div>
+          </div>
+        </div>
+
         <div
           className="max-w-3xl mx-auto text-center overflow-hidden"
           onTouchStart={handleSolutionTouchStart}
@@ -496,11 +506,11 @@ function SolutionSection() {
             style={{ transform: `translateX(-${solutionSlide * 100}%)` }}
           >
             {solutionSlides.map((slide) => (
-              <div key={slide.tone} className="w-full flex-shrink-0 px-2">
-                <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4 text-balance">
+              <div key={slide.tone} className="w-full flex-shrink-0 px-2 sm:px-4">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground mb-4 text-balance">
                   {slide.title}
                 </h2>
-                <p className="text-center text-muted-foreground text-lg mb-4 md:mb-6">
+                <p className="text-center text-muted-foreground text-base sm:text-lg mb-4 md:mb-6">
                   {slide.description}
                 </p>
               </div>
@@ -508,26 +518,25 @@ function SolutionSection() {
           </div>
         </div>
 
-        <div className="mt-4 flex items-center justify-center gap-4">
+        <div className="mt-4 flex items-center justify-center gap-1.5 sm:gap-3 w-full overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           <button
             type="button"
             onClick={solutionPrev}
-            className="px-3 py-1 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors"
+            className="px-3 py-1.5 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors flex-shrink-0"
             aria-label="Previous solution slide"
           >
             ←
           </button>
-          <div className="flex flex-wrap justify-center gap-2">
-            {["Professional", "Emotional", "Trust"].map((label, index) => (
+          <div className="flex flex-nowrap justify-center gap-1.5 sm:gap-2">
+            {["Trust1", "Trust2", "Trust3"].map((label, index) => (
               <button
                 key={label}
                 type="button"
                 onClick={() => setSolutionSlide(index)}
-                className={`px-3 py-1 text-xs rounded-full border transition-colors ${
-                  solutionSlide === index
-                    ? "bg-sage text-sage-dark border-sage"
-                    : "bg-white text-muted-foreground border-border hover:bg-cream-dark"
-                }`}
+                className={`px-3 py-1.5 text-xs sm:text-sm rounded-full border transition-colors whitespace-nowrap flex-shrink-0 ${solutionSlide === index
+                  ? "bg-sage text-sage-dark border-sage"
+                  : "bg-white text-muted-foreground border-border hover:bg-cream-dark"
+                  }`}
                 aria-label={`${label} solution slide`}
               >
                 {label}
@@ -537,30 +546,14 @@ function SolutionSection() {
           <button
             type="button"
             onClick={solutionNext}
-            className="px-3 py-1 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors"
+            className="px-3 py-1.5 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors flex-shrink-0"
             aria-label="Next solution slide"
           >
             →
           </button>
         </div>
 
-        {/* Product Image */}
-        <div className="flex justify-center mb-16">
-          <div className="relative w-full max-w-md">
-            <div className="absolute inset-0 bg-sage/10 rounded-3xl transform -rotate-2"></div>
-            <div className="relative bg-white rounded-3xl p-8 shadow-lg">
-              <Image
-                src={PRODUCT_IMAGE_1}
-                alt="Kindoora Edge Protector"
-                width={400}
-                height={400}
-                className="w-full h-auto object-contain"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {features.map((feature, idx) => {
             const Icon = feature.icon
             return (
@@ -590,69 +583,69 @@ function SolutionSection() {
 function BenefitsSection() {
   const benefitSlides = [
     {
-      tone: "Professional",
-      sectionTitle: "Why Choose Kindoora",
+      tone: "Trust1",
+      sectionTitle: "Why Families Trust Kindoora",
       sectionDescription:
-        "Reliable edge protection designed to make your home safer without affecting your furniture’s appearance.",
+        "Reliable edge protection designed to make homes safer without changing the look of your furniture.",
       items: [
         {
-          icon: Heart,
-          title: "Enhanced Safety",
+          icon: Shield,
+          title: "Trusted Safety",
           description: "Kindoora edge protectors help reduce the risk of bumps and injuries caused by sharp furniture edges.",
         },
         {
           icon: Home,
           title: "Seamless Design",
-          description: "The transparent, low-profile design blends smoothly with your furniture without affecting your home décor.",
+          description: "The transparent, low-profile design blends naturally with your furniture and home décor.",
         },
         {
           icon: Award,
           title: "Durable Protection",
-          description: "Made from high-quality silicone that absorbs impact and provides reliable, long-lasting protection.",
+          description: "High-quality silicone absorbs impact and stays securely attached for everyday use.",
         },
       ],
     },
     {
-      tone: "Emotional",
-      sectionTitle: "Why Parents Love Kindoora",
-      sectionDescription: "Create a safer home where your little ones can explore freely.",
+      tone: "Trust2",
+      sectionTitle: "Protection Parents Can Rely On",
+      sectionDescription: "Simple and dependable safety designed for modern family homes.",
       items: [
         {
-          icon: Heart,
-          title: "Peace of Mind",
-          description: "Let your child crawl, walk, and explore while Kindoora cushions sharp furniture edges.",
+          icon: Leaf,
+          title: "Child-Safe Materials",
+          description: "Made with soft silicone designed to cushion sharp furniture edges.",
         },
         {
-          icon: Home,
-          title: "Blends with Your Home",
-          description: "The transparent design protects your child while keeping your furniture stylish.",
+          icon: Package,
+          title: "Blends with Furniture",
+          description: "Clear and flexible design fits smoothly with tables, shelves, cabinets, and beds.",
         },
         {
-          icon: Award,
-          title: "Soft Yet Strong Protection",
-          description: "Flexible silicone gently absorbs impact during everyday play.",
+          icon: Shield,
+          title: "Reliable Hold",
+          description: "Strong adhesive keeps the protector securely in place.",
         },
       ],
     },
     {
-      tone: "Trust",
-      sectionTitle: "Safe Protection Families Trust",
-      sectionDescription: "Designed to help parents create a safer home environment with reliable materials.",
+      tone: "Trust3",
+      sectionTitle: "Safe Edge Protection You Can Trust",
+      sectionDescription: "Thoughtfully designed to help families create safer living spaces.",
       items: [
         {
           icon: Heart,
-          title: "Reliable Safety",
-          description: "Kindoora edge protectors help reduce the risk of injuries caused by sharp furniture edges.",
+          title: "Gentle Edge Cushioning",
+          description: "Soft silicone helps reduce the impact of accidental bumps.",
         },
         {
           icon: Home,
-          title: "Discreet Design",
-          description: "The clear, low-profile design blends naturally with your furniture.",
+          title: "Clean & Minimal Design",
+          description: "Low-profile protectors stay nearly invisible on your furniture.",
         },
         {
-          icon: Award,
-          title: "Durable Materials",
-          description: "High-quality silicone absorbs impact and stays securely in place.",
+          icon: Shield,
+          title: "Long-Lasting Quality",
+          description: "Durable material built to protect your home every day.",
         },
       ],
     },
@@ -681,7 +674,7 @@ function BenefitsSection() {
   }
 
   return (
-    <section id="benefits" className="py-16 md:py-24 bg-sage/5">
+    <section id="benefits" className="py-12 md:py-24 bg-sage/5 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
           <span className="inline-block px-4 py-1.5 bg-white text-sage-dark rounded-full text-sm font-medium mb-4">
@@ -699,10 +692,10 @@ function BenefitsSection() {
             >
               {benefitSlides.map((slide) => (
                 <div key={slide.tone} className="w-full flex-shrink-0 px-2">
-                  <h2 className="text-3xl md:text-4xl font-semibold text-foreground text-balance">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground text-balance">
                     {slide.sectionTitle}
                   </h2>
-                  <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+                  <p className="mt-4 md:mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
                     {slide.sectionDescription}
                   </p>
                 </div>
@@ -710,26 +703,25 @@ function BenefitsSection() {
             </div>
           </div>
 
-          <div className="mt-6 flex items-center justify-center gap-4">
+          <div className="mt-6 flex items-center justify-center gap-1.5 sm:gap-3 w-full overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             <button
               type="button"
               onClick={benefitsPrev}
-              className="px-3 py-1 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors"
+              className="px-3 py-1.5 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors flex-shrink-0"
               aria-label="Previous benefits slide"
             >
               ←
             </button>
-            <div className="flex flex-wrap justify-center gap-2">
-              {["Professional", "Emotional", "Trust"].map((label, index) => (
+            <div className="flex flex-nowrap justify-center gap-1.5 sm:gap-2">
+              {["Trust1", "Trust2", "Trust3"].map((label, index) => (
                 <button
                   key={label}
                   type="button"
                   onClick={() => setBenefitsSlide(index)}
-                  className={`px-3 py-1 text-xs rounded-full border transition-colors ${
-                    benefitsSlide === index
-                      ? "bg-sage text-sage-dark border-sage"
-                      : "bg-white text-muted-foreground border-border hover:bg-cream-dark"
-                  }`}
+                  className={`px-3 py-1.5 text-xs sm:text-sm rounded-full border transition-colors whitespace-nowrap flex-shrink-0 ${benefitsSlide === index
+                    ? "bg-sage text-sage-dark border-sage"
+                    : "bg-white text-muted-foreground border-border hover:bg-cream-dark"
+                    }`}
                   aria-label={`${label} benefits slide`}
                 >
                   {label}
@@ -739,7 +731,7 @@ function BenefitsSection() {
             <button
               type="button"
               onClick={benefitsNext}
-              className="px-3 py-1 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors"
+              className="px-3 py-1.5 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors flex-shrink-0"
               aria-label="Next benefits slide"
             >
               →
@@ -747,7 +739,7 @@ function BenefitsSection() {
           </div>
         </div>
 
-        <div className="mt-16">
+        <div className="mt-12 md:mt-16">
           <div className="overflow-hidden">
             <div
               className="flex transition-transform duration-500 ease-out"
@@ -755,17 +747,17 @@ function BenefitsSection() {
             >
               {benefitSlides.map((slide) => (
                 <div key={slide.tone} className="w-full flex-shrink-0">
-                  <div className="grid md:grid-cols-3 gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                     {slide.items.map((benefit, index) => (
                       <div
                         key={index}
-                        className="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-md transition-shadow"
+                        className="bg-white rounded-2xl p-6 md:p-8 text-center shadow-sm hover:shadow-md transition-shadow"
                       >
-                        <div className="w-16 h-16 bg-terracotta/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                          <benefit.icon className="w-8 h-8 text-terracotta" />
+                        <div className="w-14 h-14 md:w-16 md:h-16 bg-terracotta/10 rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6">
+                          <benefit.icon className="w-6 h-6 md:w-8 md:h-8 text-terracotta" />
                         </div>
-                        <h3 className="text-xl font-semibold text-foreground mb-3">{benefit.title}</h3>
-                        <p className="text-muted-foreground leading-relaxed">{benefit.description}</p>
+                        <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2 md:mb-3">{benefit.title}</h3>
+                        <p className="text-sm md:text-base text-muted-foreground leading-relaxed">{benefit.description}</p>
                       </div>
                     ))}
                   </div>
@@ -784,38 +776,41 @@ function WhyChooseSection() {
   const whySlides = [
     {
       tone: "Professional",
-      title: "Designed for Safe and Modern Homes",
-      description: "Practical safety solutions built with quality materials and easy installation.",
-      body: "At Kindoora, we focus on creating simple and effective home safety products that help families protect their living spaces quickly and efficiently.",
+      title: "A Brand Parents Can Depend On",
+      description: "Built with safety, quality materials, and simple installation in mind.",
+      body: "At Kindoora, we focus on creating dependable home safety solutions that families can trust.",
       bullets: [
-        "✔ Premium Quality Silicone",
+        "✔  Premium Quality Silicone",
         "✔ Child-Safe Materials",
-        "✔ Strong and Reliable Adhesive",
-        "✔ Quick and Easy Installation",
+        "✔ Strong Adhesive Hold",
+        "✔ Easy Installation in Minutes",
       ],
     },
     {
       tone: "Emotional",
-      title: "Made for Families Who Care",
-      description: "Simple protection designed to keep your home safe and comfortable.",
-      body: "At Kindoora, we believe every child deserves a safe place to explore and grow.",
+      title: "Safety You Can Rely On",
+      description: "Products designed to provide dependable protection for modern families.",
+      body: "At Kindoora, every product is made using durable, child-safe materials so parents can baby-proof their homes with confidence.",
       bullets: [
-        "✔ Designed with families in mind",
-        "✔ Gentle protection for curious toddlers",
-        "✔ Quick setup for busy parents",
-        "✔ Safety without changing your home’s style",
+        "✔ Premium Silicone Material",
+        "✔ Safe for Children and Pets",
+
+        "✔ Secure Adhesive Technology",
+        "✔ Quick Tool-Free Installation",
+        ,
       ],
     },
     {
       tone: "Trust",
-      title: "A Brand Parents Can Depend On",
-      description: "Focused on safety, quality, and dependable protection for families.",
-      body: "At Kindoora, every product is designed with durable, child-safe materials to ensure reliable protection for everyday family life.",
+      title: "Built with Safety and Quality in Mind",
+      description: "Reliable home safety products designed for families",
+      body: "At Kindoora, we combine thoughtful design with high-quality materials to create products parents can trust.",
       bullets: [
-        "✔ Premium Quality Silicone",
-        "✔ Child-Safe Materials",
+        "✔ Durable Premium Silicone",
+        "✔ Child-Friendly Materials",
         "✔ Strong Adhesive Hold",
-        "✔ Easy Installation in Minutes",
+        "✔ Fast and Simple Installation",
+
       ],
     },
   ]
@@ -850,17 +845,17 @@ function WhyChooseSection() {
   }
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-12 md:py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center gap-12">
+        <div className="flex flex-col items-center gap-8 md:gap-12">
           {/* Image - Now at the top for all screen sizes */}
-          <div className="relative w-full max-w-4xl mx-auto shadow-2xl rounded-3xl overflow-hidden ring-1 ring-black/5">
+          <div className="relative w-full max-w-4xl mx-auto shadow-xl rounded-2xl md:rounded-3xl overflow-hidden ring-1 ring-black/5 aspect-video md:aspect-[2/1]">
             <Image
               src="/images/trusted-parents.jpg"
               alt="Caring parents with their baby in a safe home"
-              width={1200}
-              height={600}
-              className="w-full h-auto object-cover max-h-[500px]"
+              fill
+              sizes="100vw"
+              className="object-cover"
             />
           </div>
 
@@ -879,17 +874,17 @@ function WhyChooseSection() {
                 style={{ transform: `translateX(-${whySlide * 100}%)` }}
               >
                 {whySlides.map((slide) => (
-                  <div key={slide.tone} className="w-full flex-shrink-0 px-2">
-                    <h2 className="text-3xl md:text-5xl font-semibold text-foreground leading-tight text-balance">
+                  <div key={slide.tone} className="w-full flex-shrink-0 px-2 sm:px-4">
+                    <h2 className="text-2xl sm:text-3xl md:text-5xl font-semibold text-foreground leading-tight text-balance">
                       {slide.title}
                     </h2>
-                    <p className="mt-4 text-lg md:text-xl text-muted-foreground leading-relaxed">
+                    <p className="mt-3 md:mt-4 text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
                       {slide.description}
                     </p>
-                    <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
+                    <p className="mt-3 md:mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
                       {slide.body}
                     </p>
-                    <div className="mt-6 space-y-1 text-sm md:text-base text-muted-foreground">
+                    <div className="mt-5 md:mt-6 space-y-1 md:space-y-2 text-sm sm:text-base text-muted-foreground text-left max-w-xs mx-auto">
                       {slide.bullets.map((bullet) => (
                         <div key={bullet}>{bullet}</div>
                       ))}
@@ -899,26 +894,25 @@ function WhyChooseSection() {
               </div>
             </div>
 
-            <div className="mt-6 flex items-center justify-center gap-4">
+            <div className="mt-6 flex items-center justify-center gap-1.5 sm:gap-3 w-full overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
               <button
                 type="button"
                 onClick={whyPrev}
-                className="px-3 py-1 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors"
+                className="px-3 py-1.5 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors flex-shrink-0"
                 aria-label="Previous why choose slide"
               >
                 ←
               </button>
-              <div className="flex flex-wrap justify-center gap-2">
-                {["Professional", "Emotional", "Trust"].map((label, index) => (
+              <div className="flex flex-nowrap justify-center gap-1.5 sm:gap-2">
+                {["Trust1", "Trust2", "Trust3"].map((label, index) => (
                   <button
                     key={label}
                     type="button"
                     onClick={() => setWhySlide(index)}
-                    className={`px-3 py-1 text-xs rounded-full border transition-colors ${
-                      whySlide === index
-                        ? "bg-sage text-sage-dark border-sage"
-                        : "bg-white text-muted-foreground border-border hover:bg-cream-dark"
-                    }`}
+                    className={`px-3 py-1.5 text-xs sm:text-sm rounded-full border transition-colors whitespace-nowrap flex-shrink-0 ${whySlide === index
+                      ? "bg-sage text-sage-dark border-sage"
+                      : "bg-white text-muted-foreground border-border hover:bg-cream-dark"
+                      }`}
                     aria-label={`${label} why choose slide`}
                   >
                     {label}
@@ -928,18 +922,18 @@ function WhyChooseSection() {
               <button
                 type="button"
                 onClick={whyNext}
-                className="px-3 py-1 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors"
+                className="px-3 py-1.5 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors flex-shrink-0"
                 aria-label="Next why choose slide"
               >
                 →
               </button>
             </div>
 
-            <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4 w-full">
+            <div className="mt-8 md:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 w-full px-2 sm:px-0">
               {reasons.map((reason, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-center gap-3 bg-cream rounded-xl px-4 py-4 border border-sage/10 hover:border-sage/30 transition-colors"
+                  className="flex items-center justify-center sm:justify-start gap-3 bg-cream rounded-xl px-4 py-3 md:py-4 border border-sage/10 hover:border-sage/30 transition-colors"
                 >
                   <reason.icon className="w-5 h-5 text-sage flex-shrink-0" />
                   <span className="text-sm font-medium text-foreground whitespace-nowrap">{reason.key}</span>
@@ -987,13 +981,13 @@ function SocialProofSection() {
   }, [testimonials.length])
 
   return (
-    <section className="py-16 md:py-24 bg-cream">
+    <section className="py-12 md:py-24 bg-cream overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
           <span className="inline-block px-4 py-1.5 bg-sage/10 text-sage-dark rounded-full text-sm font-medium mb-4">
             Testimonials
           </span>
-          <h2 className="text-3xl md:text-4xl font-semibold text-foreground text-balance">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground text-balance">
             What Parents Are Saying
           </h2>
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
@@ -1009,17 +1003,17 @@ function SocialProofSection() {
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
               {testimonials.map((testimonial, index) => (
-                <div key={index} className="w-full flex-shrink-0">
-                  <div className="bg-white rounded-3xl p-8 md:p-12 shadow-lg">
-                    <div className="flex gap-1 mb-4">
+                <div key={index} className="w-full flex-shrink-0 px-2 sm:px-0">
+                  <div className="bg-white rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-12 shadow-lg">
+                    <div className="flex justify-center sm:justify-start gap-1 mb-4">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-terracotta text-terracotta" />
+                        <Star key={i} className="w-4 sm:w-5 h-4 sm:h-5 fill-terracotta text-terracotta" />
                       ))}
                     </div>
-                    <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                    <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-6 sm:mb-8 text-center sm:text-left">
                       &ldquo;{testimonial.content}&rdquo;
                     </p>
-                    <div className="flex items-center gap-4">
+                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 text-center sm:text-left">
                       <div className="w-14 h-14 bg-sage/20 rounded-full flex items-center justify-center flex-shrink-0">
                         <span className="text-lg font-bold text-sage">{testimonial.name.charAt(0)}</span>
                       </div>
@@ -1057,13 +1051,13 @@ function HowItWorksSection() {
   const howSlides = [
     {
       tone: "Professional",
-      title: "Simple Installation in Minutes",
-      subtitle: "No tools required. Just peel, stick, and secure your furniture edges.",
+      title: "A Simple and Reliable Process",
+      subtitle: "Install protection quickly with a design made for everyday homes.",
       steps: [
         {
           number: "01",
           title: "Clean the Surface",
-          description: "Wipe the furniture edge to remove dust and ensure proper adhesion.",
+          description: "Remove dust and dirt for proper adhesion.",
         },
         {
           number: "02",
@@ -1084,55 +1078,56 @@ function HowItWorksSection() {
     },
     {
       tone: "Emotional",
-      title: "Make Your Home Safer in Minutes",
-      subtitle: "A quick and simple way to protect your furniture and your child.",
+      title: "Protection Installed in Minutes",
+
+      subtitle: "A simple process designed for secure and reliable results.",
       steps: [
         {
           number: "01",
-          title: "Clean the Surface",
-          description: "A quick wipe helps the protector stick perfectly.",
+          title: "Prepare the Surface",
+          description: "Clean the furniture edge to ensure strong adhesion.",
         },
         {
           number: "02",
-          title: "Peel the Backing",
-          description: "Remove the film to reveal the adhesive strip.",
+          title: "Remove the Backing",
+          description: "Peel the protective film.",
         },
         {
           number: "03",
-          title: "Stick and Press",
-          description: "Align the protector and press firmly.",
+          title: "Apply the Protector",
+          description: "Align and press along the furniture edge",
         },
         {
           number: "04",
-          title: "Enjoy Peace of Mind",
-          description: "Your home is now safer for curious little explorers.",
+          title: "Safe and Secure",
+          description: "Your edges are now cushioned and protected.",
         },
       ],
     },
     {
       tone: "Trust",
-      title: "A Simple and Reliable Process",
-      subtitle: "Install protection quickly with a method designed for dependable results.",
+      title: "Easy and Reliable Setup",
+      subtitle: "Protect your furniture with a quick and simple installation",
       steps: [
         {
           number: "01",
-          title: "Clean the Surface",
-          description: "Remove dust and dirt to ensure strong adhesion.",
+          title: "Clean the Edge",
+          description: "Remove dust and dirt.",
         },
         {
           number: "02",
-          title: "Peel the Protective Film",
+          title: "Peel the Adhesive Film",
           description: "Expose the adhesive backing.",
         },
         {
           number: "03",
-          title: "Apply and Press",
+          title: "Place and Press",
           description: "Align the protector and press firmly.",
         },
         {
           number: "04",
-          title: "Safe and Secure",
-          description: "Your furniture edges are now cushioned to help protect toddlers and pets.",
+          title: "Enjoy Safer Furniture",
+          description: "Your furniture edges are now cushioned and protected.",
         },
       ],
     },
@@ -1161,7 +1156,7 @@ function HowItWorksSection() {
   }
 
   return (
-    <section id="how-it-works" className="py-16 md:py-24 bg-white">
+    <section id="how-it-works" className="py-12 md:py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
           <span className="inline-block px-4 py-1.5 bg-sage/10 text-sage-dark rounded-full text-sm font-medium mb-4">
@@ -1178,11 +1173,11 @@ function HowItWorksSection() {
               style={{ transform: `translateX(-${howSlide * 100}%)` }}
             >
               {howSlides.map((slide) => (
-                <div key={slide.tone} className="w-full flex-shrink-0 px-2">
-                  <h2 className="text-3xl md:text-4xl font-semibold text-foreground text-balance">
+                <div key={slide.tone} className="w-full flex-shrink-0 px-2 sm:px-4">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground text-balance">
                     {slide.title}
                   </h2>
-                  <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+                  <p className="mt-4 md:mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
                     {slide.subtitle}
                   </p>
                 </div>
@@ -1190,26 +1185,25 @@ function HowItWorksSection() {
             </div>
           </div>
 
-          <div className="mt-6 flex items-center justify-center gap-4">
+          <div className="mt-6 flex items-center justify-center gap-1.5 sm:gap-3 w-full overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             <button
               type="button"
               onClick={howPrev}
-              className="px-3 py-1 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors"
+              className="px-3 py-1.5 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors flex-shrink-0"
               aria-label="Previous how it works slide"
             >
               ←
             </button>
-            <div className="flex flex-wrap justify-center gap-2">
-              {["Professional", "Emotional", "Trust"].map((label, index) => (
+            <div className="flex flex-nowrap justify-center gap-1.5 sm:gap-2">
+              {["Trust1", "Trust2", "Trust3"].map((label, index) => (
                 <button
                   key={label}
                   type="button"
                   onClick={() => setHowSlide(index)}
-                  className={`px-3 py-1 text-xs rounded-full border transition-colors ${
-                    howSlide === index
-                      ? "bg-sage text-sage-dark border-sage"
-                      : "bg-white text-muted-foreground border-border hover:bg-cream-dark"
-                  }`}
+                  className={`px-3 py-1.5 text-xs sm:text-sm rounded-full border transition-colors whitespace-nowrap flex-shrink-0 ${howSlide === index
+                    ? "bg-sage text-sage-dark border-sage"
+                    : "bg-white text-muted-foreground border-border hover:bg-cream-dark"
+                    }`}
                   aria-label={`${label} how it works slide`}
                 >
                   {label}
@@ -1219,7 +1213,7 @@ function HowItWorksSection() {
             <button
               type="button"
               onClick={howNext}
-              className="px-3 py-1 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors"
+              className="px-3 py-1.5 text-sm rounded-full border border-border bg-white hover:bg-cream-dark transition-colors flex-shrink-0"
               aria-label="Next how it works slide"
             >
               →
@@ -1227,30 +1221,30 @@ function HowItWorksSection() {
           </div>
         </div>
 
-        <div className="mt-16 grid lg:grid-cols-2 gap-12 items-center">
-          <div className="rounded-3xl overflow-hidden shadow-lg border border-border/50 bg-white">
+        <div className="mt-12 md:mt-16 grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div className="rounded-2xl md:rounded-3xl overflow-hidden shadow-lg border border-border/50 bg-white relative aspect-[4/3] w-full max-w-lg mx-auto lg:max-w-none">
             <Image
               src={newImage}
               alt="Installation process demonstration"
-              width={600}
-              height={600}
-              className="w-full h-auto object-contain"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-contain p-2 md:p-4"
             />
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 gap-4 md:gap-6 w-full">
             <div className="sm:col-span-2 overflow-hidden">
               <div
                 className="flex transition-transform duration-500 ease-out"
                 style={{ transform: `translateX(-${howSlide * 100}%)` }}
               >
                 {howSlides.map((slide) => (
-                  <div key={slide.tone} className="w-full flex-shrink-0 grid sm:grid-cols-2 gap-6">
+                  <div key={slide.tone} className="w-full flex-shrink-0 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                     {slide.steps.map((step, index) => (
-                      <div key={index} className="bg-cream rounded-2xl p-6 md:p-8">
-                        <div className="text-4xl font-bold text-sage/20 mb-4">{step.number}</div>
-                        <h3 className="text-lg font-semibold text-foreground mb-2">{step.title}</h3>
-                        <p className="text-muted-foreground leading-relaxed">{step.description}</p>
+                      <div key={index} className="bg-cream rounded-2xl p-5 md:p-8 text-center sm:text-left">
+                        <div className="text-3xl md:text-4xl font-bold text-sage/20 mb-3 md:mb-4">{step.number}</div>
+                        <h3 className="text-base md:text-lg font-semibold text-foreground mb-2">{step.title}</h3>
+                        <p className="text-sm md:text-base text-muted-foreground leading-relaxed">{step.description}</p>
                       </div>
                     ))}
                   </div>
@@ -1270,55 +1264,47 @@ function FAQSection() {
 
   const faqs = [
     {
-      question: "Is the material safe for babies?",
-      answer: "Absolutely! Our edge protectors are made from premium, non-toxic materials that are completely safe for babies and toddlers. They are BPA-free, phthalate-free, and meet all international safety standards."
+      question: "Is the Kindoora edge protector safe for babies and pets?",
+      answer: "Yes. It is made from soft, child-safe silicone that helps protect babies and pets from sharp edges."
     },
     {
-      question: "Will it damage my furniture?",
-      answer: "No, our specially formulated adhesive is designed to be strong enough to stay in place but gentle enough not to damage furniture surfaces. When removed properly, it leaves no marks or residue."
+      question: "Will the adhesive damage my furniture?",
+      answer: "No. The adhesive holds well but can be removed carefully without damaging furniture."
     },
     {
-      question: "How long does installation take?",
-      answer: "Installation is quick and easy—most parents complete their entire living room in under 10 minutes. Simply clean the surface, peel off the backing, and press firmly."
+      question: "Can it fit different types of furniture?",
+      answer: "Yes. It is flexible and can be cut to size, so it fits tables, shelves, cabinets, beds, and more."
     },
     {
-      question: "Can it be used on glass tables?",
-      answer: "Yes! Kindoora Edge Protector works excellently on glass surfaces. The adhesive is designed to bond well with smooth surfaces while still being removable without damage."
+      question: "How long will it stay in place?",
+      answer: "The strong adhesive keeps it firmly attached for a long time."
     },
     {
-      question: "Does it leave residue when removed?",
-      answer: "When removed carefully according to our instructions, the protector comes off cleanly without leaving residue. We recommend using a hair dryer on low heat to soften the adhesive for easier removal."
+      question: "Will it change the look of my furniture?",
+      answer: "No. The clear design blends with your furniture, so it is hardly noticeable."
     },
     {
-      question: "Is it waterproof?",
-      answer: "Yes, our edge protectors are water-resistant and can withstand regular cleaning. They're perfect for use in kitchens and areas where occasional spills might occur."
-    },
-    {
-      question: "Can it be trimmed to size?",
-      answer: "Absolutely! The protector can be easily cut with regular scissors to fit any furniture edge length. We recommend measuring before cutting for the best fit."
-    },
-    {
-      question: "How long does the adhesive last?",
-      answer: "With proper installation, our adhesive maintains its strength for 2+ years under normal conditions. We offer a 2-year warranty on all our products."
+      question: "Can I remove it easily?",
+      answer: "Yes. You can peel it off slowly without leaving sticky marks"
     }
   ]
 
   return (
-    <section id="faq" className="py-16 md:py-24 bg-cream">
+    <section id="faq" className="py-12 md:py-24 bg-cream overflow-hidden">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <span className="inline-block px-4 py-1.5 bg-sage/10 text-sage-dark rounded-full text-sm font-medium mb-4">
             FAQ
           </span>
-          <h2 className="text-3xl md:text-4xl font-semibold text-foreground text-balance">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground text-balance">
             Frequently Asked Questions
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+          <p className="mt-4 md:mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
             Everything you need to know about Kindoora Edge Protector.
           </p>
         </div>
 
-        <div className="mt-12 space-y-4">
+        <div className="mt-8 md:mt-12 space-y-3 md:space-y-4">
           {faqs.map((faq, index) => (
             <div
               key={index}
@@ -1326,17 +1312,17 @@ function FAQSection() {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full px-6 py-5 text-left flex items-center justify-between gap-4 hover:bg-cream/50 transition-colors"
+                className="w-full px-4 md:px-6 py-4 md:py-5 text-left flex items-center justify-between gap-3 md:gap-4 hover:bg-cream/50 transition-colors"
               >
-                <span className="font-medium text-foreground">{faq.question}</span>
+                <span className="font-medium text-foreground text-sm md:text-base pr-4">{faq.question}</span>
                 <ChevronDown
-                  className={`w-5 h-5 text-muted-foreground flex-shrink-0 transition-transform ${openIndex === index ? "rotate-180" : ""
+                  className={`w-4 md:w-5 h-4 md:h-5 text-muted-foreground flex-shrink-0 transition-transform ${openIndex === index ? "rotate-180" : ""
                     }`}
                 />
               </button>
               {openIndex === index && (
-                <div className="px-6 pb-5">
-                  <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+                <div className="px-4 md:px-6 pb-4 md:pb-5">
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">{faq.answer}</p>
                 </div>
               )}
             </div>
@@ -1387,21 +1373,21 @@ function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-cream">
+    <section id="contact" className="py-12 md:py-24 bg-cream overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-10 md:mb-12">
           <span className="inline-block px-4 py-1.5 bg-sage/10 text-sage-dark rounded-full text-sm font-medium mb-4">
             Get in Touch
           </span>
-          <h2 className="text-3xl md:text-4xl font-semibold text-foreground text-balance">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground text-balance">
             Contact Us
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+          <p className="mt-4 md:mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
             Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
           </p>
         </div>
 
-        <div className="bg-white rounded-3xl p-8 md:p-12 shadow-lg">
+        <div className="bg-white rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-12 shadow-lg">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
@@ -1675,17 +1661,19 @@ function Footer() {
 // Main Page Component
 export default function KindooraLandingPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-hidden w-full flex flex-col">
       <Navbar />
-      <HeroSection />
-      <ProblemSection />
-      <SolutionSection />
-      <BenefitsSection />
-      <WhyChooseSection />
-      <SocialProofSection />
-      <HowItWorksSection />
-      <FAQSection />
-      <ContactSection />
+      <div className="flex-1 w-full">
+        <HeroSection />
+        <ProblemSection />
+        <SolutionSection />
+        <BenefitsSection />
+        <WhyChooseSection />
+        <SocialProofSection />
+        <HowItWorksSection />
+        <FAQSection />
+        <ContactSection />
+      </div>
       <Footer />
     </main>
   )
