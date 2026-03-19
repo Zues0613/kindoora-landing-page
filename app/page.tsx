@@ -1,7 +1,8 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import Image from "next/image"
+import emailjs from '@emailjs/browser'
 import { ChevronDown, Menu, X, Shield, Leaf, Zap, Package, Heart, Home, Award, Clock, Check, Star, Droplets, Scissors, Calendar } from "lucide-react"
 
 import logoBlack from "./logo-black.png"
@@ -1333,138 +1334,163 @@ function FAQSection() {
 // CTA Section
 // Contact Form Section
 function ContactSection() {
+  const formRef = useRef<HTMLFormElement>(null)
+  const [showSuccess, setShowSuccess] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
+    from_name: "",
+    reply_to: "",
+    phone_number: "",
     message: "",
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitMessage, setSubmitMessage] = useState("")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-    setFormData((prev: typeof formData) => ({
-      ...prev,
-      [name]: value,
-    }))
+    setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (!formRef.current) return
     setIsSubmitting(true)
 
-    // Simulate submission delay
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    try {
+      const templateParams = {
+        fullName: formData.from_name,       // Used in both templates
+        from_name: formData.from_name,      // Repo variant
+        emailAddress: formData.reply_to,    // Admin template variant
+        reply_to: formData.reply_to,        // EmailJS standard
+        phoneNumber: formData.phone_number, // Admin template variant
+        phone_number: formData.phone_number, // User input name
+        message: formData.message,         // Shared
+      }
 
-    // Log the form data (in production, this would be sent to a server)
-    console.log("[v0] Contact form submitted:", formData)
+      // 1. Send to Admin Template
+      const adminRes = await emailjs.send(
+        'service_cmiyrtz',
+        'template_yiujdbr',
+        templateParams,
+        'hBqYv0Dxo3z3vm6uB'
+      )
+      console.log("Admin email sent successfully:", adminRes.status, adminRes.text)
 
-    // Show success message
-    setSubmitMessage("Thank you! We've received your message. We'll get back to you within 24 hours.")
-    setFormData({ fullName: "", email: "", phone: "", message: "" })
+      setShowSuccess(true)
+      setFormData({ from_name: "", reply_to: "", phone_number: "", message: "" })
+    } catch (error: any) {
+      console.error("CRITICAL CONTACT FORM FAILURE:", error)
+      const errorMsg = error?.text || error?.message || "Unknown error"
+      alert(`Failed to send message: ${errorMsg}. Please check your EmailJS settings.`)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
-    // Clear message after 5 seconds
-    setTimeout(() => setSubmitMessage(""), 5000)
-    setIsSubmitting(false)
+  const handleReset = () => {
+    setShowSuccess(false)
   }
 
   return (
-    <section id="contact" className="py-12 md:py-24 bg-cream overflow-hidden">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-12 md:py-24 bg-[#FBF5F0] overflow-hidden font-['Outfit',_sans-serif]">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 md:mb-12">
-          <span className="inline-block px-4 py-1.5 bg-sage/10 text-sage-dark rounded-full text-sm font-medium mb-4">
-            Get in Touch
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground text-balance">
+          <span className="inline-block px-4 py-1.5 bg-[#D2A478]/10 text-[#D2A478] rounded-full text-sm font-medium mb-4">
             Contact Us
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#333333] mb-4">
+            Get in Touch
           </h2>
-          <p className="mt-4 md:mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
-            Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
-          </p>
         </div>
 
-        <div className="bg-white rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-12 shadow-lg">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="fullName" className="block text-sm font-medium text-foreground mb-2">
-                  Full Name
-                </label>
+        <div className="bg-white p-6 sm:p-10 rounded-[20px] shadow-[0_10px_40px_rgba(0,0,0,0.04)] transition-transform duration-300">
+          {!showSuccess ? (
+            <form ref={formRef} onSubmit={handleSubmit} className="animate-in fade-in duration-500">
+              <div className="flex flex-col sm:flex-row gap-5 mb-6">
+                <div className="flex-1">
+                  <label htmlFor="from_name" className="block text-sm font-medium text-[#333333] mb-2.5">Full Name</label>
+                  <input
+                    type="text"
+                    id="from_name"
+                    name="from_name"
+                    value={formData.from_name}
+                    onChange={handleChange}
+                    required
+                    placeholder="Your name"
+                    className="w-full px-5 py-4 border border-[#EAEAEA] rounded-[12px] text-base focus:outline-none focus:border-[#D2A478] focus:ring-4 focus:ring-[#D2A478]/10 transition-all placeholder:text-[#BBBBBB]"
+                  />
+                </div>
+                <div className="flex-1">
+                  <label htmlFor="reply_to" className="block text-sm font-medium text-[#333333] mb-2.5">Email Address</label>
+                  <input
+                    type="email"
+                    id="reply_to"
+                    name="reply_to"
+                    value={formData.reply_to}
+                    onChange={handleChange}
+                    required
+                    placeholder="your@email.com"
+                    className="w-full px-5 py-4 border border-[#EAEAEA] rounded-[12px] text-base focus:outline-none focus:border-[#D2A478] focus:ring-4 focus:ring-[#D2A478]/10 transition-all placeholder:text-[#BBBBBB]"
+                  />
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <label htmlFor="phone_number" className="block text-sm font-medium text-[#333333] mb-2.5">Phone Number</label>
                 <input
-                  type="text"
-                  id="fullName"
-                  name="fullName"
-                  value={formData.fullName}
+                  type="tel"
+                  id="phone_number"
+                  name="phone_number"
+                  value={formData.phone_number}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-sage/50 transition-colors"
-                  placeholder="Your name"
+                  placeholder="+91 XXXXX XXXXX"
+                  className="w-full px-5 py-4 border border-[#EAEAEA] rounded-[12px] text-base focus:outline-none focus:border-[#D2A478] focus:ring-4 focus:ring-[#D2A478]/10 transition-all placeholder:text-[#BBBBBB]"
                 />
               </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
+
+              <div className="mb-6">
+                <label htmlFor="message" className="block text-sm font-medium text-[#333333] mb-2.5">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-sage/50 transition-colors"
-                  placeholder="your@email.com"
+                  rows={5}
+                  placeholder="Tell us how we can help..."
+                  className="w-full px-5 py-4 border border-[#EAEAEA] rounded-[12px] text-base focus:outline-none focus:border-[#D2A478] focus:ring-4 focus:ring-[#D2A478]/10 transition-all placeholder:text-[#BBBBBB] resize-none"
                 />
               </div>
-            </div>
 
-            <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-sage/50 transition-colors"
-                placeholder="+91 XXXXX XXXXX"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows={5}
-                className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-sage/50 transition-colors resize-none"
-                placeholder="Tell us how we can help..."
-              />
-            </div>
-
-            {submitMessage && (
-              <div className={`p-4 rounded-lg ${submitMessage.includes("Thank you") ? "bg-sage/10 text-sage-dark" : "bg-red-50 text-red-700"}`}>
-                {submitMessage}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full py-4.5 bg-[#D2A478] text-white font-medium rounded-[12px] text-lg hover:bg-[#C19368] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(210,_164,_120,_0.3)] active:translate-y-0 transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <span>Sending...</span>
+                  </>
+                ) : (
+                  <span>Send Message</span>
+                )}
+              </button>
+            </form>
+          ) : (
+            <div className="text-center py-5 animate-in fade-in slide-in-from-bottom-2 duration-500">
+              <div className="text-5xl text-[#D2A478] mb-5 flex justify-center">
+                <Check className="w-16 h-16" />
               </div>
-            )}
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full py-3.5 bg-terracotta text-white font-medium rounded-lg hover:bg-terracotta-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? "Sending..." : "Send Message"}
-            </button>
-          </form>
+              <h3 className="text-2xl font-semibold mb-2.5 text-[#333333]">Message Sent!</h3>
+              <p className="text-[#666666] mb-8">We'll get back to you shortly.</p>
+              <button
+                onClick={handleReset}
+                className="px-6 py-3 border border-[#D2A478] text-[#D2A478] rounded-[12px] text-sm font-medium hover:bg-[#D2A478] hover:text-white transition-all"
+              >
+                Send Another Message
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </section>
