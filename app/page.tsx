@@ -931,21 +931,33 @@ function SocialProofSection() {
 
   const testimonials = [
     {
-      name: "Nivi Vishwa",
-      role: "Mother of 2",
-      content: "As a first-time mom, I was constantly worried about my toddler bumping into furniture. Kindoora gave me the peace of mind I needed. The quality is exceptional and it blends perfectly with our furniture.",
+      name: "Aaradhya M.",
+      role: "",
+      content: "As a first-time mother, every small risk feels overwhelming. Kindoora gave me a sense of calm I didn't realize I needed. Now, I can let my little one explore without constant worry.",
       rating: 5
     },
     {
-      name: "Ammu Sivakumar",
-      role: "Mother of 1",
-      content: "I love how easy it was to install. Within 10 minutes, our entire living room was baby-proofed. My husband was impressed with how secure the adhesive is. Highly recommend!",
+      name: "Neha S.",
+      role: "",
+      content: "My toddler is always on the move, and sharp corners were a constant concern. Kindoora's edge protectors are soft, secure, and blend beautifully into our home. It feels like safety without compromise.",
       rating: 5
     },
     {
-      name: "Meenakshi Arunachalam",
-      role: "Mother of 3",
-      content: "After trying several brands, Kindoora stands out for its premium quality. The soft cushioning has already saved us from numerous potential bumps. Worth every penny!",
+      name: "Priya K.",
+      role: "",
+      content: "What I appreciate most is the thoughtfulness behind the design. It's gentle, reliable, and truly made for children. I no longer feel the need to hover every second.",
+      rating: 5
+    },
+    {
+      name: "Ritika Sharma",
+      role: "",
+      content: "We've tried other safety products before, but nothing felt this dependable. Kindoora stays in place and does exactly what it promises — protects quietly and effectively.",
+      rating: 5
+    },
+    {
+      name: "Divya R.",
+      role: "",
+      content: "It's more than just a safety product. It's peace of mind for parents. Knowing my child is protected, even during those playful, unpredictable moments, makes all the difference.",
       rating: 5
     }
   ]
